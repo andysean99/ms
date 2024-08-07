@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>精準行銷策略：提升您的投資回報</title>
+    <title>2024年全方位行銷策略服務選單</title>
     <style>
         body { font-family: "Microsoft JhengHei", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1, h2 { color: #2c3e50; }
+        h1, h2, h3 { color: #2c3e50; }
         .service-category { margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
         .service-item { margin-bottom: 10px; }
         input[type="checkbox"] { margin-right: 10px; }
@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>精準行銷策略：提升您的投資回報</h1>
+    <h1>2024年全方位行銷策略服務選單</h1>
     <p>15年頂尖行銷經驗。P8等級行銷專家，曾每月管理1,200萬元數位廣告預算，持續24個月。平均廣告投資回報率(ROAS)達20倍。擁有創造數十億獲利的經驗。</p>
     <p>策略諮詢投資：每小時6,000元 - 釋放您企業的成長潛力</p>
 
@@ -32,11 +32,10 @@
 
         <div class="service-category">
             <h2>B) 數位行銷精進</h2>
-            <div class="service-item"><input type="checkbox" id="keyword-research" data-cost="60000"> <label for="keyword-research">關鍵字優化策略 - 發掘高轉化率關鍵字，提升搜尋排名和網站流量。(最少10小時，60,000元起）</label></div>
+            <div class="service-item"><input type="checkbox" id="keyword-research" data-cost="60000"> <label for="keyword-research">SEO關鍵字策略 - 發掘高轉化率關鍵字，提升搜尋排名和網站流量。(最少10小時，60,000元起）</label></div>
             <div class="service-item"><input type="checkbox" id="ppc-projection" data-cost="72000"> <label for="ppc-projection">PPC廣告效益最大化 - 優化廣告支出，提高點擊率和轉換率。(最少12小時，72,000元起）</label></div>
-            <div class="service-item"><input type="checkbox" id="sales-funnel" data-cost="90000"> <label for="sales-funnel">高效銷售漏斗建立 - 設計最適配銷售流程，提高轉換率和客戶價值。(最少15小時，90,000元起）</label></div>
-            <div class="service-item"><input type="checkbox" id="social-media" data-cost="60000"> <label for="social-media">社群媒體行銷策略 - 如何有效提升品牌知名度，增加用戶參與度和轉換率。(最少10小時，60,000元起）</label></div>
-            <div class="service-item"><input type="checkbox" id="content-marketing" data-cost="72000"> <label for="content-marketing">內容行銷策略 - 挖掘內容賽道，達到事半功倍，吸引目標消費客戶，建立品牌權威。(最少12小時，72,000元起）</label></div>
+            <div class="service-item"><input type="checkbox" id="social-media-basic" data-cost="60000"> <label for="social-media-basic">社群媒體行銷策略 - 建立品牌社群形象，增加用戶互動和參與度。(最少10小時，60,000元起）</label></div>
+            <div class="service-item"><input type="checkbox" id="content-marketing-basic" data-cost="72000"> <label for="content-marketing-basic">內容行銷策略 - 開發吸引目標客戶的內容，提升品牌知名度和權威性。(最少12小時，72,000元起）</label></div>
             <div class="service-item"><input type="checkbox" id="line-customer" data-cost="36000"> <label for="line-customer">LINE行銷策略 - 優化LINE官方與客服帳號，提高用戶互動和客戶消費次數。(最少6小時，36,000元起）</label></div>
         </div>
 
@@ -54,7 +53,7 @@
 
         <div class="service-category">
             <h2>E) 業績成長策略</h2>
-            <div class="service-item"><input type="checkbox" id="funnel-strategy" data-cost="90000"> <label for="funnel-strategy">銷售漏斗優化 - 提高每個階段的轉換率，最大化銷售效果。(最少15小時，90,000元起）</label></div>
+            <div class="service-item"><input type="checkbox" id="sales-funnel" data-cost="90000"> <label for="sales-funnel">銷售漏斗優化 - 設計最適配銷售流程，提高轉換率和客戶價值。(最少15小時，90,000元起）</label></div>
             <div class="service-item"><input type="checkbox" id="funnel-implementation" data-cost="120000"> <label for="funnel-implementation">銷售策略執行指導 - 確保銷售策略的有效落地和執行。(最少20小時，120,000元起）</label></div>
             <div class="service-item"><input type="checkbox" id="funnel-optimization" data-cost="60000"> <label for="funnel-optimization">持續優化與成效追蹤 - 根據數據持續調整策略，確保長期成效。(最少10小時，60,000元起）</label></div>
         </div>
@@ -88,6 +87,9 @@
 
         <label for="line">LINE ID：</label>
         <input type="text" id="line" name="line">
+
+        <label for="message">訊息：</label>
+        <textarea id="message" name="message" rows="4"></textarea>
 
         <input type="hidden" id="selected-services" name="selected-services">
         <input type="hidden" id="total-investment" name="total-investment">
@@ -128,7 +130,6 @@
                 if (totalInvestmentInput) {
                     totalInvestmentInput.value = totalCost.toLocaleString() + '元';
                 }
-                console.log("Total cost updated:", totalCost);
             }
 
             function updateSelectedServices() {
@@ -137,16 +138,14 @@
                     selectedServices.push(checkbox.nextElementSibling.textContent.trim());
                 });
                 if (selectedServicesInput) {
-                    selectedServicesInput.value = selectedServices.join(', ');
+                    selectedServicesInput.value = selectedServices.join('\n');
                 }
-                console.log("Selected services updated:", selectedServices);
             }
 
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     updateSelectedServices();
                     updateTotalCost();
-                    console.log("Form submitted with:", selectedServices, totalCost);
                 });
             } else {
                 console.error("Contact form not found");
