@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>精準行銷策略服務選單</title>
+    <title>精準行銷策略：提升您的投資回報</title>
     <style>
         body { font-family: "Microsoft JhengHei", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
         h1, h2 { color: #2c3e50; }
@@ -11,7 +11,10 @@
         .service-item { margin-bottom: 10px; }
         input[type="checkbox"] { margin-right: 10px; }
         .package { background-color: #f9f9f9; padding: 15px; margin-top: 20px; border-radius: 5px; }
-        #total-cost { font-weight: bold; font-size: 1.2em; margin-top: 20px; }
+        #total-cost { font-weight: bold; font-size: 1.2em; margin-top: 20px; margin-bottom: 20px; }
+        #contact-form { margin-top: 30px; }
+        #contact-form input, #contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+        #contact-form button { padding: 10px 20px; background-color: #2c3e50; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -72,7 +75,7 @@
 
     <div id="total-cost">總投資金額：0元</div>
 
-<h2>聯絡表單</h2>
+    <h2>聯絡表單</h2>
     <form id="contact-form" action="https://formspree.io/f/xrbzkbvr" method="POST">
         <label for="name">姓名：</label>
         <input type="text" id="name" name="name" required>
@@ -86,7 +89,9 @@
         <label for="line">LINE ID：</label>
         <input type="text" id="line" name="line">
 
-        
+        <label for="message">訊息：</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
         <input type="hidden" id="selected-services" name="selected-services">
         <input type="hidden" id="total-investment" name="total-investment">
 
@@ -125,5 +130,6 @@
             updateSelectedServices();
             updateTotalCost();
         });
+    </script>
 </body>
 </html>
