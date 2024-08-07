@@ -99,36 +99,61 @@
     </form>
 
     <script>
-        let selectedServices = [];
-        let totalCost = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceMenu = document.getElementById('service-menu');
+            const totalCostDisplay = document.getElementById('total-cost');
+            const contactForm = document.getElementById('contact-form');
+            const selectedServicesInput = document.getElementById('selected-services');
+            const totalInvestmentInput = document.getElementById('total-investment');
 
-        document.getElementById('service-menu').addEventListener('change', function(e) {
-            if (e.target.type === 'checkbox') {
-                updateTotalCost();
-                updateSelectedServices();
+            let selectedServices = [];
+            let totalCost = 0;
+
+            if (serviceMenu) {
+                serviceMenu.addEventListener('change', function(e) {
+                    if (e.target.type === 'checkbox') {
+                        updateTotalCost();
+                        updateSelectedServices();
+                    }
+                });
+            } else {
+                console.error("Service menu form not found");
             }
-        });
 
-        function updateTotalCost() {
-            totalCost = 0;
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
-                totalCost += parseInt(checkbox.dataset.cost);
-            });
-            document.getElementById('total-cost').textContent = '總投資金額：' + totalCost.toLocaleString() + '元';
-            document.getElementById('total-investment').value = totalCost.toLocaleString() + '元';
-        }
+            function updateTotalCost() {
+                totalCost = 0;
+                document.querySelectorAll('#service-menu input[type="checkbox"]:checked').forEach(function(checkbox) {
+                    totalCost += parseInt(checkbox.dataset.cost);
+                });
+                if (totalCostDisplay) {
+                    totalCostDisplay.textContent = '總投資金額：' + totalCost.toLocaleString() + '元';
+                }
+                if (totalInvestmentInput) {
+                    totalInvestmentInput.value = totalCost.toLocaleString() + '元';
+                }
+                console.log("Total cost updated:", totalCost);
+            }
 
-        function updateSelectedServices() {
-            selectedServices = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
-                selectedServices.push(checkbox.nextElementSibling.textContent.trim());
-            });
-            document.getElementById('selected-services').value = selectedServices.join(', ');
-        }
+            function updateSelectedServices() {
+                selectedServices = [];
+                document.querySelectorAll('#service-menu input[type="checkbox"]:checked').forEach(function(checkbox) {
+                    selectedServices.push(checkbox.nextElementSibling.textContent.trim());
+                });
+                if (selectedServicesInput) {
+                    selectedServicesInput.value = selectedServices.join(', ');
+                }
+                console.log("Selected services updated:", selectedServices);
+            }
 
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            updateSelectedServices();
-            updateTotalCost();
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    updateSelectedServices();
+                    updateTotalCost();
+                    console.log("Form submitted with:", selectedServices, totalCost);
+                });
+            } else {
+                console.error("Contact form not found");
+            }
         });
     </script>
 </body>
