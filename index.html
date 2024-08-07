@@ -72,20 +72,58 @@
 
     <div id="total-cost">總投資金額：0元</div>
 
+<h2>聯絡表單</h2>
+    <form id="contact-form" action="https://formspree.io/f/xrbzkbvr" method="POST">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">電話號碼：</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="line">LINE ID：</label>
+        <input type="text" id="line" name="line">
+
+        
+        <input type="hidden" id="selected-services" name="selected-services">
+        <input type="hidden" id="total-investment" name="total-investment">
+
+        <button type="submit">送出</button>
+    </form>
+
     <script>
+        let selectedServices = [];
+        let totalCost = 0;
+
         document.getElementById('service-menu').addEventListener('change', function(e) {
             if (e.target.type === 'checkbox') {
                 updateTotalCost();
+                updateSelectedServices();
             }
         });
 
         function updateTotalCost() {
-            let total = 0;
+            totalCost = 0;
             document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
-                total += parseInt(checkbox.dataset.cost);
+                totalCost += parseInt(checkbox.dataset.cost);
             });
-            document.getElementById('total-cost').textContent = '總投資金額：' + total.toLocaleString() + '元';
+            document.getElementById('total-cost').textContent = '總投資金額：' + totalCost.toLocaleString() + '元';
+            document.getElementById('total-investment').value = totalCost.toLocaleString() + '元';
         }
-    </script>
+
+        function updateSelectedServices() {
+            selectedServices = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
+                selectedServices.push(checkbox.nextElementSibling.textContent.trim());
+            });
+            document.getElementById('selected-services').value = selectedServices.join(', ');
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            updateSelectedServices();
+            updateTotalCost();
+        });
 </body>
 </html>
